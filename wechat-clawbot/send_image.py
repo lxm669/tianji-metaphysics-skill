@@ -130,7 +130,7 @@ def upload_and_send_media(bot_id: str, file_path: str, media_kind: str = "image"
         "base_info": base_info()
     }
     res = http_post_json(f"{baseurl}/ilink/bot/sendmessage", send_payload, bot_token=bot_token, timeout=20)
-    if res.get("ret") == 0:
+    if res.get("ret", 0) == 0:
         inc_token_quota(bot_id)
     return res
 

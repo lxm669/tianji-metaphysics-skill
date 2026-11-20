@@ -202,6 +202,6 @@ def send_text_message(bot_id: str, text: str, context_token: str = None, to_user
     }
     url = f"{baseurl.rstrip('/')}/ilink/bot/sendmessage"
     res = http_post_json(url, payload, bot_token=bot_token, timeout=20)
-    if res.get("ret") == 0:
+    if res.get("ret", 0) == 0:
         inc_token_quota(bot_id)
     return res
